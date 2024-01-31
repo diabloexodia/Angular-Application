@@ -1,0 +1,54 @@
+
+<mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="avatar">
+        <mat-header-cell *matHeaderCellDef> Avatar </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <img [src]="element.avatar" alt="Avatar" width="50" height="50"> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+  
+  
+    
+  
+
+    
+  
+    
+   
+  
+   
+    <ng-container matColumnDef="sub1">
+      <mat-header-cell *matHeaderCellDef> Sub 1 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subject1}} </mat-cell>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="sub2">
+      <mat-header-cell *matHeaderCellDef> Sub 2 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subject2}} </mat-cell>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="sub3">
+      <mat-header-cell *matHeaderCellDef> Sub 3 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subject3}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+ 
+  
