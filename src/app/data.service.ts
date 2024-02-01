@@ -23,16 +23,14 @@ export class DataService {
    
   }
   
-  getUserData(id: number): Observable<User[]> {
+  getUserData(id: number): Observable<User> {
    
     const url = `https://65aa055f081bd82e1d95de7d.mockapi.io/todo/todo/${id}`;
   
-    return this.http.get<User[]>(url)
+    return this.http.get<User>(url)
       .pipe(
-        tap(data => console.log("User data fetched:", data)), // Log successful response
-        catchError(error => {
-          console.error("Error fetching user data:", error);
-          return ([]); // Return an empty array on error to avoid template errors
+        catchError((error)=>{
+          throw error;
         })
       );
   }
@@ -47,5 +45,14 @@ export class DataService {
    
 //   // return this.http.put<User[]>(url)
 // }
+
+updateStudentDetails(student: User): Observable<User> {
+  return this.http.put<User>(`https://65aa055f081bd82e1d95de7d.mockapi.io/todo/todo/${student.id}`, student).pipe(
+    catchError((error) => {
+      console.error('Error updating student details:', error);
+      throw error;
+    })
+  );
+}
   
 }

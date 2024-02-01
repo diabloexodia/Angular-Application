@@ -1,6 +1,6 @@
 
-<nav class="header">
-    <button class="register_student" class="btn btn-secondary m-2" (click)="registerStudent()">
+<nav class="nav navbar-default ">
+    <button class="register_student" class="btn btn-secondary " (click)="registerStudent()">
       +  Register Student 
     </button>
    
@@ -20,7 +20,7 @@
 
   <ng-container matColumnDef="avatar">
       <th mat-header-cell *matHeaderCellDef> Avatar </th>
-      <td mat-cell *matCellDef="let element"> <img src="{{element.avatar}}" style="width: 15rem; height: 15rem;"> </td>
+      <td mat-cell *matCellDef="let element"> <img src="{{element.avatar}}" style="width: 15rem; height: 15rem;" class="img-fluid">  </td>
   </ng-container>
 
   <ng-container matColumnDef="expand">

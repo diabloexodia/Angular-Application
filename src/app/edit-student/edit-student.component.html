@@ -4,7 +4,7 @@
 
     <ng-container matColumnDef="avatar">
         <mat-header-cell *matHeaderCellDef> Avatar </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <img [src]="element.avatar" alt="Avatar" width="50" height="50"> </mat-cell>
+        <mat-cell *matCellDef="let element"> <img [src]="element.avatar" alt="Avatar" width="50px" height="50px" class="img-fluid"> </mat-cell>
       </ng-container>
       <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
@@ -37,9 +37,9 @@
     </ng-container>
 
 
-    <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef>edit </mat-header-cell>
-      <mat-cell *matCellDef="let element"><button class="btn btn-success" type="submit" (click)="editDetails(element)">Edit Details</button>
+    <ng-container matColumnDef="Edit">
+      <mat-header-cell *matHeaderCellDef>Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button class="btn btn-success" type="submit" (click)="editDetails(element.id)">Edit Details</button>
       </mat-cell>
     
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
