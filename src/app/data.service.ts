@@ -39,14 +39,8 @@ export class DataService {
     const url = `https://65aa055f081bd82e1d95de7d.mockapi.io/todo/todo/${id}`;
     return this.http.delete(url);
 }
-
-// updateStudentDetails(student: Element): Observable<User> {
-//   const url = `https://65aa055f081bd82e1d95de7d.mockapi.io/todo/todo/${id}`;
-   
-//   // return this.http.put<User[]>(url)
-// }
-
 updateStudentDetails(student: User): Observable<User> {
+  console.log('inside updateStudentDetails', student.id)
   return this.http.put<User>(`https://65aa055f081bd82e1d95de7d.mockapi.io/todo/todo/${student.id}`, student).pipe(
     catchError((error) => {
       console.error('Error updating student details:', error);

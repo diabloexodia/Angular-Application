@@ -47,9 +47,6 @@ export class HomePageComponent {
       alert("Delete Successful");
       console.log(response);
       location.reload();
-    
-    
-
   });
 }
   

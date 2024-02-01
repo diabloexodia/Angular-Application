@@ -41,17 +41,6 @@ export class EdituserComponent {
     }
   }
 
-
-  //student!:User;
-  submitHandler=() =>{
-    if (this.studentForm.valid){
-      alert("success");
-      // this.postData();
-      this.router.navigate(['/']);
-    }else{
-      alert("fill all the mandatory fields");
-    }
-    }
   putData() {
     const userData = this.studentForm.value;
    
@@ -72,8 +61,6 @@ export class EdituserComponent {
     if (id) { // if id exists
       this.student.id = +id;  // assign id to student, convert from string to number using the '+' sign
     }
-
-    // Update student details
     this.dataService.updateStudentDetails(this.student).subscribe(
       (updatedStudent) => {
         console.log('Student details updated successfully:', updatedStudent);
@@ -85,6 +72,7 @@ export class EdituserComponent {
       }
     );
       // the student.id is stored in the below id
+      console.log('inside the editData');
     console.log(this.student.id);
   }
 }

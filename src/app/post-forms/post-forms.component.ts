@@ -28,7 +28,6 @@ export class PostFormsComponent {
   submitHandler=() =>{
     if (this.loginForm.valid){
       alert("success");
-      // this.postData();
       this.router.navigate(['/']);
     }else{
       alert("fill all the mandatory fields");
