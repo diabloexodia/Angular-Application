@@ -1,0 +1,62 @@
+<section class ="container">
+
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Edit </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+        </div>
+      <div class="col-md-3">
+        <form [formGroup]="loginForm"   (ngSubmit)="submitHandler()">
+          <div class="form-group">
+            <input class = 'form-control mb-2 p-3' type="text" placeholder="Name" formControlName="username" required>
+            <div *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+              <p *ngIf="loginForm.get('username').errors.required">Username is mandatory</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <input class = 'form-control mb-2 p-3' type="email" placeholder="Enter email" formControlName="email" >
+            <div *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+              <p *ngIf="loginForm.get('email').errors.required">Email is mandatory</p>
+              <p *ngIf="loginForm.get('email').errors.email">Please enter a valid email</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter department" formControlName="department" required>
+            <div *ngIf="loginForm.get('department').invalid && (loginForm.get('department').dirty || loginForm.get('department').touched)">
+              <p *ngIf="loginForm.get('department').errors.required">Department is mandatory</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter avatar URL"   formControlName="avatar" >
+            
+          </div>
+          <div class="form-group">
+            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter Subject 1"  formControlName="subject1"  [value]="loginForm?.get('subject1')?.value" >
+          </div>
+          <div class="form-group">
+            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter Subject 2" formControlName="subject2"  [value]="loginForm?.get('subject2')?.value">
+          </div>
+          <div class="form-group">
+            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter Subject 3" formControlName="subject3" [value]="loginForm?.get('subject3')?.value" >
+          </div>
+            <div class = 'd-grid gap-3'>         <button class="btn btn-success" type="submit" (click)="putData()">Update</button>
+            </div>
+          </form>
+        
+      </div>
+      <div class="col-md-3"></div>
+      </div>
+      
+    
+    
+    </div>
+    
+    
+    
+    
+        
+          
+    </section>
+    

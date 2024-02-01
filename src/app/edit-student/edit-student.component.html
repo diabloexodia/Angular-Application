@@ -18,17 +18,7 @@
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
-  
-  
-    
-  
-
-    
-  
-    
-   
-  
-   
+ 
     <ng-container matColumnDef="sub1">
       <mat-header-cell *matHeaderCellDef> Sub 1 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.subject1}} </mat-cell>
@@ -45,10 +35,20 @@
       <mat-header-cell *matHeaderCellDef> Sub 3 </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.subject3}} </mat-cell>
     </ng-container>
-  
+
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef>edit </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button class="btn btn-success" type="submit" (click)="editDetails(element)">Edit Details</button>
+      </mat-cell>
+    
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </ng-container>
   </mat-table>
+  
+
+
 
  
   

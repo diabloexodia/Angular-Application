@@ -41,5 +41,11 @@ export class DataService {
     const url = `https://65aa055f081bd82e1d95de7d.mockapi.io/todo/todo/${id}`;
     return this.http.delete(url);
 }
+
+// updateStudentDetails(student: Element): Observable<User> {
+//   const url = `https://65aa055f081bd82e1d95de7d.mockapi.io/todo/todo/${id}`;
+   
+//   // return this.http.put<User[]>(url)
+// }
   
 }

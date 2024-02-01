@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { User } from '../shared/user.interface';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,7 +25,7 @@ export class EditStudentComponent {
   id?:number;
 
   
-  constructor(private route: ActivatedRoute,private dataServices:DataService) {}
+  constructor(private route: ActivatedRoute,private dataServices:DataService,private router:Router) {}
   
   ngOnInit(): void {
     
@@ -42,7 +42,7 @@ export class EditStudentComponent {
     dataSource2?:any;
    // studentdata?: any[];
     //  dataSource?:any;
-    displayedColumns: string[] = ['name', 'id', 'avatar','email','sub1','sub2','sub3']; // Adjust based on your data properties
+    displayedColumns: string[] = ['name', 'id', 'avatar','email','sub1','sub2','sub3','edit']; // Adjust based on your data properties
     
     fetchStudentDetails(id: number): void {
       this.dataServices.getUserData(id).subscribe({
@@ -56,7 +56,9 @@ export class EditStudentComponent {
     });
 
     }
-    
+    editDetails(id:number){
+      this.router.navigate(['register']);
+    }
 
   }
   

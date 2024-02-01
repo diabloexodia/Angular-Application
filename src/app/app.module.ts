@@ -13,12 +13,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatIconModule} from '@angular/material/icon';
 import { EditStudentComponent } from './edit-student/edit-student.component';
+import { EdituserComponent } from './edituser/edituser.component';
 @NgModule({
   declarations: [
     AppComponent,
     PostFormsComponent,
     HomePageComponent,
     EditStudentComponent,
+    EdituserComponent,
 
   ],
   imports: [
