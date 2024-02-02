@@ -1,6 +1,6 @@
-<div class="outer-container  d-flex justify-content-center ml-10 w-100 p-3">
-  <div class="container   ">
-    <div class="row">
+
+  <div class="container d-flex  ml-10 w-100 h-100 p-3 ">
+    <div class="row w-100 justify-content-center align-items-center">
       <div class="col-md-4" *ngFor="let element of dataSource2"> <mat-card class="card mb-3"> <mat-card-header
             class="card-header">
             <mat-card-title>
@@ -8,7 +8,7 @@
             </mat-card-title>
             <mat-card-subtitle>{{ element.email }}</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-content class="card-body ">
+          <mat-card-content class="card-body  w-100">
             <p>ID: {{ element.id }}</p>
             <p>DSA: {{ element.subject1 }}</p>
             <p>DBMS: {{ element.subject2 }}</p>
@@ -21,5 +21,3 @@
       </div>
     </div>
   </div>
-
-</div>

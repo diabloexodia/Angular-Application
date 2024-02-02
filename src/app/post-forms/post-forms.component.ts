@@ -1,22 +1,15 @@
 import { Component } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { DataService } from '../data.service';
+import { DataService } from '../shared/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { User } from '../shared/user.interface';
 @Component({
   selector: 'app-post-forms',
   templateUrl: './post-forms.component.html',
   styleUrls: ['./post-forms.component.css'],
 })
 export class PostFormsComponent {
-  loginForm: FormGroup | any;
-  dataSource!: any;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private dataService: DataService,
-    private router: Router
-  ) {}
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
@@ -28,17 +21,35 @@ export class PostFormsComponent {
       subject3: ['', Validators.required],
     });
   }
-  submitHandler = () => {
+  constructor(
+    private formBuilder: FormBuilder,
+    private dataService: DataService,
+    private router: Router
+  ) {}
+  loginForm: FormGroup | any;
+
+  /**
+   * Submitshandler calls the postData funtion if the form is valid
+   *  @function submitHandler
+   *  @returns {void}
+   */
+  submitHandler = (): void => {
     if (this.loginForm.valid) {
+      this.postData();
       alert('success');
-      this.router.navigate(['/']);
     } else {
       alert('fill all the mandatory fields');
     }
   };
-  postData() {
+
+  /**
+   * Submits and registers the new user by making a POST request
+   *  @function postData
+   *  @returns {void}
+   */
+  postData(): void {
     const userData = this.loginForm.value;
-    console.log('hi', userData);
+
     this.dataService
       .postDataStudent(
         userData.username,
@@ -49,11 +60,14 @@ export class PostFormsComponent {
         userData.subject3
       )
       .subscribe({
-        next: (newData: any) => {
-          // Acknowledge single-record response
-          this.dataSource.data.push(newData); // Append the new record
-          this.dataSource._updateChangeSubscription(); // Notify MatTableDataSource
-          console.log('Data posted and appended:', this.dataSource.data);
+        next: (newData: User) => {
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete() {
+          console.log('postData Method completed');
         },
       });
   }

@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { DataService } from '../data.service';
+import { DataService } from '../shared/data.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { User } from '../shared/user.interface';
 
@@ -49,7 +49,11 @@ export class EdituserComponent {
       });
     }
   }
-
+  /**
+   * Addes the new student details to the server
+   *  @function editData
+   *  @returns {void}
+   */
   putData() {
     const userData = this.studentForm.value;
 
@@ -73,7 +77,11 @@ export class EdituserComponent {
   }
 
   student: User = {} as User;
-
+  /**
+   * Extracts hte id from the URl and display student information card
+   *  @function editData
+   *  @returns {void}
+   */
   editData(): void {
     const id = this.route.snapshot.paramMap.get('id'); // get id from route parameter
 
@@ -81,24 +89,25 @@ export class EdituserComponent {
       // if id exists
       this.student.id = +id; // assign id to student, convert from string to number using the '+' sign
     }
-    this.dataService.updateStudentDetails(this.student).subscribe(
-      (updatedStudent) => {
+    this.dataService.updateStudentDetails(this.student).subscribe({
+      next: (updatedStudent) => {
         console.log('Student details updated successfully:', updatedStudent);
         // Navigate back to the profile page
 
         alert('Updated Successfully');
         this.router.navigate([`/student/${updatedStudent.id}`]);
       },
-      (error) => {
-        console.error('Error updating student details:', error);
-      }
-    );
-    // the student.id is stored in the below id
-    //   console.log('inside the editData');
-    // console.log(this.student.id);
+      error: (err) => {
+        console.error('Error updating student details:', err);
+      },
+    });
   }
-
-  back() {
+  /**
+   * returns the user back to the home page
+   *  @function back
+   *  @returns {void}
+   */
+  back(): void {
     this.router.navigate([`/`]);
   }
 }

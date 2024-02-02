@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './shared/user.interface';
-import { DataService } from './data.service';
+import { DataService } from './shared/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
