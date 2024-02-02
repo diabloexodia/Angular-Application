@@ -1,0 +1,18 @@
+<section
+  class="d-flex flex-row justify-content-center gap-5 align-items-center my-5 py-5"
+>
+  <div class="w-100 h-25" [ngClass]="{ 'w-25': data?.heading === 'Software Development', 'h-100': data?.heading === 'Software Development' }">
+    <img src="/assets/fb.jpg" alt="" class="img-fluid rounded shadow-lg" />
+  </div>
+  <div class="w-100 px-5">
+    <main class="d-flex p-2">
+      <div class="w-100 h-250" [ngClass]="{ 'w-100': data?.heading === 'Software Development', 'h-250': data?.heading !== 'Software Development' }">
+        <img src="/assets/fb.jpg" alt="" class="img-fluid rounded shadow-lg" />
+      </div>
+      <div class="px-5">
+        <p class="h3 fw-bold">{{ data?.heading }}</p>
+        <p class="w-75">{{ data?.description }}</p>
+      </div>
+    </main>
+  </div>
+</section>

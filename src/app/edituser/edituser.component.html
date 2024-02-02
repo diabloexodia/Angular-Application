@@ -1,48 +1,58 @@
-<section class ="container">
+<section class="container">
 
-    <div class="container">
-      <div class="section-title text-center">
-        <h2 class="h2">Edit User Details</h2>
+  <div class="container">
+    <div class="section-title text-center">
+      <h2 class="h2">Edit User Details</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
       </div>
-      <div class="row">
-        <div class="col-md-5">
-        </div>
       <div class="col-md-3">
-        <form [formGroup]="studentForm"   (ngSubmit)="editData()">
+        <form [formGroup]="studentForm" (ngSubmit)="editData()">
           <div class="form-group">
-            <input class = 'form-control mb-2 p-3' type="text" placeholder="Name" formControlName="username" [(ngModel)]="student.name" required>
-            <div *ngIf="studentForm.get('username').invalid && (studentForm.get('username').dirty || studentForm.get('username').touched)">
+            <input class='form-control mb-2 p-3' type="text" placeholder="Name" formControlName="username"
+              [(ngModel)]="student.name" required>
+            <div
+              *ngIf="studentForm.get('username').invalid && (studentForm.get('username').dirty || studentForm.get('username').touched)">
               <p *ngIf="studentForm.get('username').errors.required">Username is mandatory</p>
             </div>
           </div>
           <div class="form-group">
-            <input class = 'form-control mb-2 p-3' type="email" placeholder="Enter email" formControlName="email" [(ngModel)]="student.email">
-            <div *ngIf="studentForm.get('email').invalid && (studentForm.get('email').dirty || studentForm.get('email').touched)">
+            <input class='form-control mb-2 p-3' type="email" placeholder="Enter email" formControlName="email"
+              [(ngModel)]="student.email">
+            <div
+              *ngIf="studentForm.get('email').invalid && (studentForm.get('email').dirty || studentForm.get('email').touched)">
               <p *ngIf="studentForm.get('email').errors.required">Email is mandatory</p>
               <p *ngIf="studentForm.get('email').errors.email">Please enter a valid email</p>
             </div>
           </div>
-          
+
           <div class="form-group">
-            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter avatar URL"   formControlName="avatar" [(ngModel)]="student.avatar">
-            
+            <input class='form-control mb-2 p-3' type="text" placeholder="Enter avatar URL" formControlName="avatar"
+              [(ngModel)]="student.avatar">
+
           </div>
           <div class="form-group">
-            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter Subject 1"  formControlName="subject1"   [(ngModel)]="student.subject1">
+            <input class='form-control mb-2 p-3' type="text" placeholder="Enter Subject 1" formControlName="subject1"
+              [(ngModel)]="student.subject1">
           </div>
           <div class="form-group">
-            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter Subject 2" formControlName="subject2"  [(ngModel)]="student.subject2">
+            <input class='form-control mb-2 p-3' type="text" placeholder="Enter Subject 2" formControlName="subject2"
+              [(ngModel)]="student.subject2">
           </div>
           <div class="form-group">
-            <input class = 'form-control mb-2 p-3' type="text" placeholder="Enter Subject 3" formControlName="subject3" [(ngModel)]="student.subject3">
+            <input class='form-control mb-2 p-3' type="text" placeholder="Enter Subject 3" formControlName="subject3"
+              [(ngModel)]="student.subject3">
           </div>
-            <div class = 'd-grid gap-3'>         <button class="btn btn-success" type="submit">Update</button>
+          <div class='d-grid gap-3'> <button class="btn btn-success" type="submit">Update</button>
+            <div class='d-grid gap-3'> <button class="btn btn-primary" (click)="back()">Back</button>
             </div>
-          </form>
-        <Button > </Button>
+          </div>
+        </form>
+
       </div>
       <div class="col-md-3"></div>
-      </div>  
-    </div>   
-    </section>
-    
+    </div>
+  </div>
+</section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

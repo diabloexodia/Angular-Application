@@ -1,54 +1,25 @@
+<div class="outer-container  d-flex justify-content-center ml-10 w-100 p-3">
+  <div class="container   ">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let element of dataSource2"> <mat-card class="card mb-3"> <mat-card-header
+            class="card-header">
+            <mat-card-title>
+              <img [src]="element.avatar" alt="Avatar" class="rounded-circle" width="70" height="70">
+            </mat-card-title>
+            <mat-card-subtitle>{{ element.email }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content class="card-body ">
+            <p>ID: {{ element.id }}</p>
+            <p>DSA: {{ element.subject1 }}</p>
+            <p>DBMS: {{ element.subject2 }}</p>
+            <p>OOPS: {{ element.subject3 }}</p>
+          </mat-card-content>
+          <mat-card-actions class="card-footer">
+            <button class="btn btn-success" (click)="editDetails(element.id)">Edit Details</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 
-<mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
-
-
-    <ng-container matColumnDef="avatar">
-        <mat-header-cell *matHeaderCellDef> Avatar </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <img [src]="element.avatar" alt="Avatar" width="50px" height="50px" class="img-fluid"> </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
-      </ng-container>
-    <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-      </ng-container>
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
- 
-    <ng-container matColumnDef="sub1">
-      <mat-header-cell *matHeaderCellDef> Sub 1 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.subject1}} </mat-cell>
-    </ng-container>
-  
-    
-    <ng-container matColumnDef="sub2">
-      <mat-header-cell *matHeaderCellDef> Sub 2 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.subject2}} </mat-cell>
-    </ng-container>
-  
-    
-    <ng-container matColumnDef="sub3">
-      <mat-header-cell *matHeaderCellDef> Sub 3 </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.subject3}} </mat-cell>
-    </ng-container>
-
-
-    <ng-container matColumnDef="Edit">
-      <mat-header-cell *matHeaderCellDef>Edit </mat-header-cell>
-      <mat-cell *matCellDef="let element"><button class="btn btn-success" type="submit" (click)="editDetails(element.id)">Edit Details</button>
-      </mat-cell>
-    
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </ng-container>
-  </mat-table>
-  
-
-
-
- 
-  
+</div>
