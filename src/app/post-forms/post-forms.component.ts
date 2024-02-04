@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { DataService } from '../shared/data.service';
-import { MatTableDataSource } from '@angular/material/table';
+import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
-import { User } from '../shared/user.interface';
+import { User } from '../shared/User.interface';
 @Component({
   selector: 'app-post-forms',
   templateUrl: './post-forms.component.html',
   styleUrls: ['./post-forms.component.css'],
 })
-export class PostFormsComponent {
-  ngOnInit() {
+export class PostFormsComponent implements OnInit {
+  ngOnInit():void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -61,6 +60,8 @@ export class PostFormsComponent {
       )
       .subscribe({
         next: (newData: User) => {
+          console.log(newData);
+          
           this.router.navigate(['/']);
         },
         error: (err) => {

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { DataService } from '../shared/data.service';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
-import { User } from '../shared/user.interface';
+import { User } from '../shared/User.interface';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css'],
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   tempControl = new FormControl();
   constructor(
     private http: HttpClient,
@@ -19,10 +19,10 @@ export class HomePageComponent {
     private router: Router
   ) { this.dataSource = new MatTableDataSource<User>();}
   listuser!: User[];
-  dataSource?: any;
+  dataSource: MatTableDataSource<User>;
   displayedColumns: string[] = ['id', 'name', 'avatar', 'expand', 'delete']; // Adjust based on your data properties
 
-  ngOnInit() {
+  ngOnInit():void {
     this.tempControl.valueChanges.subscribe((value) => {
       console.log(value);
     });
@@ -74,10 +74,10 @@ export class HomePageComponent {
    */
   deleteData(id: number): void {
     this.dataService.deleteUserData(id).subscribe({
-      next: (Response: User) => {
+      next: (Response: void) => {
         alert('Delete Successful');
         location.reload();
-        console.log('next response', Response);
+        console.log('deleteData response', Response);
       },
       error: (err) => {
         console.log(err);

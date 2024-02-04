@@ -5,26 +5,27 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { DataService } from '../shared/data.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { User } from '../shared/user.interface';
-
+import { DataService } from '../services/data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../shared/User.interface';
+import { formuser } from '../shared/FormsUser.interface';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-edituser',
   templateUrl: './edituser.component.html',
   styleUrls: ['./edituser.component.css'],
 })
-export class EdituserComponent {
-  studentForm: FormGroup | any;
-  dataSource!: any;
+export class EdituserComponent implements OnInit {
+  studentForm: FormGroup; // Declare with correct type
+
+  dataSource: MatTableDataSource<formuser>;
 
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private dataService: DataService,
     private router: Router
-  ) {}
-  ngOnInit(): void {
+  ) {
     this.studentForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -33,11 +34,14 @@ export class EdituserComponent {
       subject2: ['', Validators.required],
       subject3: ['', Validators.required],
     });
+    this.dataSource = new MatTableDataSource<formuser>([]);
+  }
+  ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id'); // get id from route parameter
     if (id) {
       // if id exists
       this.dataService.getUserData(Number(id)).subscribe((student: User) => {
-        this.student = student;
+        // this.student = student;
         this.studentForm.setValue({
           username: student.name,
           email: student.email,
@@ -54,7 +58,7 @@ export class EdituserComponent {
    *  @function editData
    *  @returns {void}
    */
-  putData() {
+  putData(): void {
     const userData = this.studentForm.value;
 
     this.dataService
@@ -67,7 +71,7 @@ export class EdituserComponent {
         userData.subject3
       )
       .subscribe({
-        next: (newData: any) => {
+        next: (newData: formuser) => {
           // Acknowledge single-record response
           this.dataSource.data.push(newData); // Append the new record
           this.dataSource._updateChangeSubscription(); // Notify MatTableDataSource
@@ -108,6 +112,13 @@ export class EdituserComponent {
    *  @returns {void}
    */
   back(): void {
-    this.router.navigate([`/`]);
+    this.router.navigate(['/']);
+  }
+  get username(): FormControl {
+    return this.studentForm.get('username') as FormControl;
+  }
+
+  public get email(): FormControl {
+    return this.studentForm.get('email') as FormControl;
   }
 }

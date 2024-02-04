@@ -13,17 +13,17 @@
             <input class='form-control mb-2 p-3' type="text" placeholder="Name" formControlName="username"
               [(ngModel)]="student.name" required>
             <div
-              *ngIf="studentForm.get('username').invalid && (studentForm.get('username').dirty || studentForm.get('username').touched)">
-              <p *ngIf="studentForm.get('username').errors.required">Username is mandatory</p>
+            *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+            <p *ngIf="username?.errors?.['required']">Username is mandatory</p>
             </div>
           </div>
           <div class="form-group">
             <input class='form-control mb-2 p-3' type="email" placeholder="Enter email" formControlName="email"
               [(ngModel)]="student.email">
             <div
-              *ngIf="studentForm.get('email').invalid && (studentForm.get('email').dirty || studentForm.get('email').touched)">
-              <p *ngIf="studentForm.get('email').errors.required">Email is mandatory</p>
-              <p *ngIf="studentForm.get('email').errors.email">Please enter a valid email</p>
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <p *ngIf="email?.errors?.['required']">Email is mandatory</p>
+              <p *ngIf="email?.['errors']?.['email']">Please enter a valid email</p>
             </div>
           </div>
 
@@ -33,15 +33,15 @@
 
           </div>
           <div class="form-group">
-            <input class='form-control mb-2 p-3' type="text" placeholder="Enter Subject 1" formControlName="subject1"
+            <input class='form-control mb-2 p-3' type="text" placeholder="DSA Marks" formControlName="subject1"
               [(ngModel)]="student.subject1">
           </div>
           <div class="form-group">
-            <input class='form-control mb-2 p-3' type="text" placeholder="Enter Subject 2" formControlName="subject2"
+            <input class='form-control mb-2 p-3' type="text" placeholder="DBMS Marks" formControlName="subject2"
               [(ngModel)]="student.subject2">
           </div>
           <div class="form-group">
-            <input class='form-control mb-2 p-3' type="text" placeholder="Enter Subject 3" formControlName="subject3"
+            <input class='form-control mb-2 p-3' type="text" placeholder="OOPS Marks" formControlName="subject3"
               [(ngModel)]="student.subject3">
           </div>
           <div class='d-grid gap-3'> <button class="btn btn-success" type="submit">Update</button>

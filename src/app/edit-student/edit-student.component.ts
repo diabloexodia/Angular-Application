@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { DataService } from '../shared/data.service';
-import { User } from '../shared/user.interface';
+import { DataService } from '../services/data.service';
+import { User } from '../shared/User.interface';
+import { FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-student',
   templateUrl: './edit-student.component.html',
   styleUrls: ['./edit-student.component.css'],
 })
-export class EditStudentComponent {
+export class EditStudentComponent implements OnInit {
   id?: number;
-  loginForm: FormGroup | any;
-
+  dataSource2: MatTableDataSource<User>;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private dataServices: DataService,
     private router: Router
-  ) {}
+  ) {
+    this.dataSource2 = new MatTableDataSource<User>([]);
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -27,8 +28,6 @@ export class EditStudentComponent {
       this.fetchStudentDetails(this.id);
     });
   }
-  studentdata!: User[];
-  dataSource2?: any;
   displayedColumns: string[] = [
     'name',
     'id',
@@ -42,12 +41,12 @@ export class EditStudentComponent {
   fetchStudentDetails(id: number): void {
     this.dataServices.getUserData(id).subscribe({
       next: (userData2) => {
-        this.dataSource2 = [userData2];
+        this.dataSource2.data = [userData2];
         console.log('Student data received:', this.dataSource2); // Log data after it's received
       },
     });
   }
-  editDetails(id: number) {
+  editDetails(id: number): void {
     this.router.navigateByUrl(`/studentEdit/${id}`);
   }
 }
