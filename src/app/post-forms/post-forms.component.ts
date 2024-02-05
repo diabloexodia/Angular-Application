@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Component} from '@angular/core';
+import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 import { User } from '../shared/User.interface';
@@ -8,24 +8,23 @@ import { User } from '../shared/User.interface';
   templateUrl: './post-forms.component.html',
   styleUrls: ['./post-forms.component.css'],
 })
-export class PostFormsComponent implements OnInit {
-  ngOnInit():void {
+export class PostFormsComponent  {
+  loginForm: FormGroup ;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private dataService: DataService,
+    private router: Router
+  ) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      department: ['', Validators.required],
       avatar: ['', Validators.required],
       subject1: ['', Validators.required],
       subject2: ['', Validators.required],
       subject3: ['', Validators.required],
     });
   }
-  constructor(
-    private formBuilder: FormBuilder,
-    private dataService: DataService,
-    private router: Router
-  ) {}
-  loginForm: FormGroup | any;
 
   /**
    * Submitshandler calls the postData funtion if the form is valid
@@ -72,4 +71,13 @@ export class PostFormsComponent implements OnInit {
         },
       });
   }
+
+  
+  get department(): FormControl {
+    return this.loginForm.get('deparment') as FormControl;
+  }
+  get email(): FormControl {
+    return this.loginForm.get('email') as FormControl;
+  }
+  
 }
